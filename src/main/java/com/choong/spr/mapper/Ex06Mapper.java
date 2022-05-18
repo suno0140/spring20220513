@@ -15,7 +15,4 @@ public interface Ex06Mapper {
 	void deleteReplyByBoard(int boardId);
 
 	int updateReply(ReplyDto reply);
-
-	
-
 }

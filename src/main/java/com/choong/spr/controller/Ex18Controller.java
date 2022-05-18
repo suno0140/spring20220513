@@ -35,3 +35,4 @@ public class Ex18Controller {
 		return "redirect:/ex17/board/" + reply.getBoardId();
 	}
 }
+

@@ -20,6 +20,7 @@ public class Ex07Service {
 	@Autowired
 	private Ex06Mapper replyMapper;
 	
+	
 	public String getCustomerNameById(int id) {
 		return mapper.selectCustomerNameById(id);
 	}
@@ -46,7 +47,6 @@ public class Ex07Service {
 	public boolean removeBoardById(int id) {
 		// 댓글 지우기
 		replyMapper.deleteReplyByBoard(id);
-		
 		// 게시물 지우기
 		int cnt = mapper.deleteBoard(id);
 		
