@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags/app01"%>
+<%@ taglib prefix="ex" tagdir="/WEB-INF/tags/app01" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,11 +51,11 @@
 									<a href="${link }"> ${board.title } </a>
 
 									<c:if test="${board.numOfReply > 0 }">
-									<span>
-									<i class="fa-solid fa-comments"></i>
-					${board.numOfReply}
-					</span>
-					</c:if>
+										<span>
+											<i class="fa-solid fa-comments"></i>
+											${board.numOfReply}
+										</span>
+									</c:if>
 
 								</td>
 								<td>${board.inserted }</td>
@@ -63,6 +64,9 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="mt-3">
+					<ex:PageNation path="list" />		
+				</div>
 			</div>
 		</div>
 	</div>

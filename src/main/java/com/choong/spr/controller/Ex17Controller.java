@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.choong.spr.domain.BoardDto;
+import com.choong.spr.domain.PageInfoDto;
 import com.choong.spr.domain.ReplyDto;
 import com.choong.spr.service.Ex07Service;
 import com.choong.spr.service.Ex08Service;
@@ -26,11 +28,21 @@ public class Ex17Controller {
 	private Ex08Service replyService;
 
 	@GetMapping("board/list")
-	public void listBoard(Model model) {
-		List<BoardDto> list = service.listBoard();
+	public void listBoard(@RequestParam(name="page", defaultValue="1")int page, Model model) {
+		int rowPerPage = 5;
+		
+		List<BoardDto> list = service.listBoard(page, rowPerPage);
+		int totalRecords = service.countBoard();
+		
+		int end = (totalRecords - 1) / rowPerPage + 1;
+		
+		PageInfoDto pageInfo = new PageInfoDto();
+		pageInfo.setCurrent(page);
+		pageInfo.setEnd(end);
+		
 		
 		model.addAttribute("boardList", list);
-		
+		model.addAttribute("pageInfo", pageInfo);
 	}
 	
 	@GetMapping("board/{id}") 

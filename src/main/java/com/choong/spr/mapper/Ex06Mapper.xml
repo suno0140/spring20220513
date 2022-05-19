@@ -5,8 +5,8 @@
 <mapper namespace="com.choong.spr.mapper.Ex06Mapper">
 	
 	<insert id="insertReply">
-	INSERT INTO Reply (board_id, content, inserted)
-	VALUES (#{boardId}, #{content}, #{inserted} )
+	INSERT INTO Reply (board_id, content)
+	VALUES (#{boardId}, #{content} )
 	
 	</insert>
 	

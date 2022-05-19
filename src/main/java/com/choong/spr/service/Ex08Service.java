@@ -16,7 +16,7 @@ public class Ex08Service {
 	private Ex06Mapper mapper;
 
 	public boolean addReply(ReplyDto reply) {
-		reply.setInserted(LocalDateTime.now());
+		//reply.setInserted(LocalDateTime.now());
 		
 		int cnt = mapper.insertReply(reply);
 		

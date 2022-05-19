@@ -50,6 +50,7 @@
 
 				<c:url value="/ex17/board/remove" var="removeLink" />
 				<form action="${removeLink }" method="post" id="form2">
+
 					<input type="hidden" name="id" value="${board.id }" />
 
 				</form>
@@ -68,7 +69,7 @@
 
 				<form action="${appRoot }/ex18/reply/add" method="post">
 					<input type="hidden" name="boardId" value="${board.id }" />
-					댓글 :
+					댓글 
 					<input type="text" name="content" size="50" />
 
 					<button>쓰기</button>
@@ -77,36 +78,43 @@
 				<hr />
 
 				<div>
-				<ul class="list-group">
-					<c:forEach items="${replyList }" var="reply">
-					<li class="list-group-item">
-						
-							${reply.inserted } : ${reply.content }
+					<ul class="list-group">
+						<c:forEach items="${replyList }" var="reply">
+							<li class="list-group-item">
 
-							<c:url value="/ex18/reply/modify" var="replyModifyLink" />
-							<form action="${replyModifyLink }" method="post" id="form3${reply.id }">
-								<input type="hidden" value="${reply.id }" name="id" />
-								<input type="hidden" name="boardId" value="${board.id }" />
-								<input type="text" value="${reply.content }" name="content" />					
-					
-							</form>
+								${reply.inserted } : ${reply.content }
 
-							<c:url value="/ex18/reply/remove" var="replyRemoveLink" />
-							<form action="${replyRemoveLink}" method="post" id="form4${reply.id }">
-								<input type="hidden" name="id" value="${reply.id }" />
-								<input type="hidden" name="boardId" value="${board.id }" />								
-					
-							</form>
-								<button type="submit" form="form3${reply.id }" class="btn btn-outline-info">
+								<c:url value="/ex18/reply/modify" var="replyModifyLink" />
+								<form action="${replyModifyLink }" method="post"
+									id="form3${reply.id }">
+									<input type="hidden" value="${reply.id }" name="id" />
+									<input type="hidden" name="boardId" value="${board.id }" />
+									<input type="text" value="${reply.content }" name="content" />
+
+								</form>
+
+
+
+								<c:url value="/ex18/reply/remove" var="replyRemoveLink" />
+								<form action="${replyRemoveLink}" method="post"
+									id="form4${reply.id }">
+									<input type="hidden" name="id" value="${reply.id }" />
+									<input type="hidden" name="boardId" value="${board.id }" />
+
+								</form>
+								
+								<button type="submit" form="form3${reply.id }"
+									class="btn btn-outline-info">
 									<i class="fa-solid fa-square-pen"></i>
 								</button>
-										
-								<button type="submit" form="form4${reply.id }" class="btn btn-outline-dark">
+
+								<button type="submit" form="form4${reply.id }"
+									class="btn btn-outline-dark">
 									<i class="fa-solid fa-trash"></i>
-								</button>			
-						
-						</li>
-					</c:forEach>
+								</button>
+
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

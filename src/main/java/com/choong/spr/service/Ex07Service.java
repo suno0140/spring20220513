@@ -29,8 +29,11 @@ public class Ex07Service {
 		return mapper.selectEmployeeFirstNameById(id);
 	}
 
-	public List<BoardDto> listBoard() {
-		return mapper.selectBoard();
+	public List<BoardDto> listBoard(int page, int rowPerPage) {
+		
+		int from = (page-1) * rowPerPage;
+		
+		return mapper.selectBoard(from, rowPerPage);
 	}
 
 	public BoardDto getBoard(int id) {
@@ -54,11 +57,15 @@ public class Ex07Service {
 	}
 
 	public boolean addBoard(BoardDto board) {
-		board.setInserted(LocalDateTime.now());
+		//board.setInserted(LocalDateTime.now());
 		
 		int cnt = mapper.insertBoard(board);
 		
 		return false;
+	}
+
+	public int countBoard() {		
+		return mapper.countBoard();
 	}
 	
 }
